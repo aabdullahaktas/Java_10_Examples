@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 
  * 
  * 2-Harf değiştirme
- * 3-Palindrom 
+ * 3-Palindrom -- kek ,kabak
  * 4-Çıkış
  * 
  * 
@@ -52,6 +52,9 @@ public class Question43 {
 				harfDegistir();
 				break;
 			case 3:
+
+				palindromMu2();
+
 				System.out.println("3.işlem");
 				break;
 			case 4:
@@ -61,6 +64,48 @@ public class Question43 {
 				break;
 			}
 		} while (islem != 4);
+
+	}
+
+	public static void palindromMu() {
+		String ifade = stringDegerAl("Lütfen bir ifade giriniz");// kabak kabbak
+
+		String birinci = ifade.substring(0, ifade.length() / 2);// ka
+		String ikinci = "";
+		if (ifade.length() % 2 != 0) {
+			ikinci = ifade.substring(ifade.length() / 2 + 1);// ak
+		} else {
+			ikinci = ifade.substring(ifade.length() / 2);
+		}
+
+		String ikinciTers = "";// ka
+		for (int i = ikinci.length() - 1; i >= 0; i--) {
+			ikinciTers += ikinci.charAt(i);
+		}
+
+		if (birinci.equals(ikinciTers)) {
+			System.out.println("Palindromdur");
+		} else {
+			System.out.println("Palindrom değildir !!!!!");
+		}
+
+	}
+
+	public static void palindromMu2() {
+		boolean kontrol = true;
+		String ifade = stringDegerAl("Lütfen bir ifade giriniz");
+		// kabak //kabbak
+		for (int i = 0; i < ifade.length() / 2; i++) {
+			if (ifade.charAt(i) != ifade.charAt(ifade.length() - 1 - i)) {
+				kontrol = false;
+				break;
+			}
+		}
+		if (kontrol) {
+			System.out.println("Palindromdur");
+		} else {
+			System.out.println("Palindrom değildir !!!!!");
+		}
 
 	}
 
