@@ -14,14 +14,15 @@ package com.bilgeadam.lesson013;
 public class BankAccount {
 
 	static double interestRate;
-	double balance;
-	String accountNumber;
+	private double balance;
+	private String accountNumber;
 
 	public BankAccount(String accountNumber, double balance) {
 		// Tek parametreli const. cagırımı
 		// this.accountNumber = accountNumber;
 		// this(balance, accountNumber);
 		this(accountNumber);
+		this.balance = balance;
 
 	}
 
@@ -55,6 +56,24 @@ public class BankAccount {
 	public double getInterestRate() {
 
 		return this.balance * interestRate;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public String getAccountNumber() {
+
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+
+		this.accountNumber = accountNumber;
 	}
 
 }

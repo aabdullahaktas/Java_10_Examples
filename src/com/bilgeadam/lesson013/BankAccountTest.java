@@ -11,8 +11,11 @@ public class BankAccountTest {
 		bankAccount1.getInformation();
 
 		BankAccount bankAccount2 = new BankAccount("1456", 159868);
-		bankAccount2.accountNumber = "456";
-		bankAccount2.balance = 561258.50;
+
+		bankAccount2.setAccountNumber("456");
+
+		bankAccount2.setBalance(561258.50);
+
 		bankAccount2.getInformation();
 
 		BankAccount bankAccount3 = new BankAccount("987", 1589);
@@ -22,6 +25,11 @@ public class BankAccountTest {
 		bankAccount4.getInformation();
 
 		BankAccount bankAccount5 = new BankAccount(500, "11125");
+
+		double sayi = bankAccount5.getBalance();
+		sayi = 5689;
+		System.out.println(bankAccount5.getBalance());
+		System.out.println(bankAccount5.getAccountNumber());
 
 	}
 
