@@ -1,9 +1,12 @@
 package com.bilgeadam.lesson014;
 
+import java.util.Arrays;
+
 public class Sepet {
 
 	private EUrun[] urunler;
 	private double totalPrice;
+	public static int index;
 
 	public Sepet() {
 		this.urunler = new EUrun[10];
@@ -24,6 +27,11 @@ public class Sepet {
 
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "Sepet [urunler=" + Arrays.toString(urunler) + ", totalPrice=" + totalPrice + "]";
 	}
 
 }

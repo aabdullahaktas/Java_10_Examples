@@ -59,4 +59,10 @@ public class Kullanici {
 		this.sepet = sepet;
 	}
 
+	@Override
+	public String toString() {
+		return "Kullanici [id=" + id + ", username=" + username + ", sifre=" + sifre + ", isim=" + isim + ", sepet="
+				+ sepet + "]";
+	}
+
 }
