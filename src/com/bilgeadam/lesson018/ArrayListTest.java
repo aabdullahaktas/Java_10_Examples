@@ -10,7 +10,7 @@ public class ArrayListTest {
 
 		List<Integer> list1 = new ArrayList<>();
 		ArrayList<Integer> list2 = new ArrayList<>();
-//		Integer[] array2 = (Integer[]) list1.toArray();
+		Integer[] array2 = (Integer[]) list1.toArray();
 //		Integer[] array3 = (Integer[]) list2.toArray();
 
 		String[] array = { "Ankara", "İstanbul" };
