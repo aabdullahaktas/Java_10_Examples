@@ -1,5 +1,7 @@
 package com.bilgeadam.lesson018.sehir;
 
+import java.util.Random;
+
 public class Sehir implements ISehir {
 
 	private String isim;
@@ -7,7 +9,6 @@ public class Sehir implements ISehir {
 	private long nufus;
 
 	public Sehir(String isim, String plaka, long nufus) {
-
 		this.isim = isim;
 		this.plaka = plaka;
 		this.nufus = nufus;
@@ -15,6 +16,7 @@ public class Sehir implements ISehir {
 
 	public Sehir(String isim) {
 		this.isim = isim;
+		this.nufus = rastgeleNufusUret();
 	}
 
 	public String getIsim() {
@@ -47,15 +49,23 @@ public class Sehir implements ISehir {
 	}
 
 	@Override
-	public String plakaKoduUret() {
-		// TODO Auto-generated method stub
-		return null;
+	public String plakaKoduUret(int index) {
+
+		if (index <= 9) {
+			this.plaka = "0" + index;
+		} else {
+			this.plaka = String.valueOf(index);
+		}
+
+		// this.plaka = Integer.toString(index);
+		return plaka;
 	}
 
 	@Override
 	public long rastgeleNufusUret() {
-		// TODO Auto-generated method stub
-		return 0;
+		Random random = new Random();
+		// this.nufus = random.nextLong(10000, 200000);
+		return random.nextLong(10000, 200000);
 	}
 
 }

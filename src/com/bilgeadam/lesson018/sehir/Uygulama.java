@@ -26,7 +26,9 @@ public class Uygulama {
 		for (int i = 0; i < SehirDatabase.iller.length; i++) {
 			String isim = SehirDatabase.iller[i];
 			Sehir sehir = new Sehir(isim);
-
+			// sehir.setNufus(sehir.rastgeleNufusUret());
+			// sehir.rastgeleNufusUret();
+			sehir.plakaKoduUret(i + 1);
 			sehirler.add(sehir);
 		}
 
