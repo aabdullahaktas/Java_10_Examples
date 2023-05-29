@@ -41,9 +41,30 @@ public class Manager {
 
 	}
 
-	private void kullan() {
-		// TODO Auto-generated method stub
+	public void kullan() {
+		if (temizler.isEmpty()) {
+			System.out.println("Temiz tabak kalmamıştır");
+			temizle();
+		} else {
+			Tabak tabak = temizler.pop();
+			tabak.setKirliMi(true);
+			kirliler.push(tabak);
+			System.out.println(tabak.getId() + " idli tabak kullanılmıştır");
+		}
 
+	}
+
+	public void secimYap(int secim) {
+		switch (secim) {
+		case 1:
+			temizle();
+			break;
+		case 2:
+			kullan();
+			break;
+		default:
+			break;
+		}
 	}
 
 }
