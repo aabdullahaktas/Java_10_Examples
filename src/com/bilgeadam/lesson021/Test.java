@@ -6,6 +6,7 @@ public class Test {
 		SansliNumaralar sansliNumaralar = new SansliNumaralar();
 		sansliNumaralar.mapOlustur();
 		sansliNumaralar.listeOlustur();
+		sansliNumaralar.sansliNumaraliBul();
 
 		// sansliNumaralar.map.forEach((k, v) -> System.out.println(k + "=" + v));
 
@@ -24,12 +25,16 @@ public class Test {
 //
 //		System.out.println("toplam uretilen sayı miktarı =" + toplam);
 
-		System.out.println("liste uzunluğu=" + sansliNumaralar.list.size());
+//		System.out.println("liste uzunluğu=" + sansliNumaralar.list.size());
+//
+//		for (Integer sayi : sansliNumaralar.list) {
+//			System.out.println(sayi);
+//		}
 
-		for (Integer sayi : sansliNumaralar.list) {
+		System.out.println("set uzunlugu" + sansliNumaralar.set.size());
+		for (Integer sayi : sansliNumaralar.set) {
 			System.out.println(sayi);
 		}
-
 	}
 
 }
