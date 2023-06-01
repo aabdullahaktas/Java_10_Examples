@@ -1,4 +1,4 @@
-package com.bilgeadam.lesson021.movieapp;
+package com.bilgeadam.lesson022.movieapp;
 
 public class Cast {
 	private Long id;

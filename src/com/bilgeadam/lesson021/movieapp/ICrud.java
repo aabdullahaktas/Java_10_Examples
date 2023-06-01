@@ -1,11 +1,11 @@
 package com.bilgeadam.lesson021.movieapp;
 
-public interface ICrud {
+public interface ICrud<T> {
 
-	void kayitEt();
+	T kayitEt(T t);
 
-	void guncelle();
+	void guncelle(T t);
 
-	void sil();
+	void sil(Long id);
 
 }

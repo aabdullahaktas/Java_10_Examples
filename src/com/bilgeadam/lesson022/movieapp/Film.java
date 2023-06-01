@@ -1,10 +1,10 @@
-package com.bilgeadam.lesson021.movieapp;
+package com.bilgeadam.lesson022.movieapp;
 
 import java.util.List;
 import java.util.Set;
 
 public class Film {
-	private Long id;
+	private String id;
 	private String isim;
 	private List<ETur> turler;
 	private double puan;
@@ -25,11 +25,11 @@ public class Film {
 
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
