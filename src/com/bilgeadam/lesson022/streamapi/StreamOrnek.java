@@ -3,6 +3,8 @@ package com.bilgeadam.lesson022.streamapi;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamOrnek {
@@ -64,12 +66,28 @@ public class StreamOrnek {
 		// her gelen degeri stringe cevirip yazdıralım
 
 		list4.stream().map(x -> "-" + x.toString() + "-").forEach(x -> System.out.println(x));
+
 		// list4.stream().map(Integer::toUnsignedString).forEach(System.out::println);
 		list4.forEach(x -> System.out.println("-" + x.toString() + "-"));
+
 		System.out.println("Sıralı liste");
+
 		list4.stream().sorted().forEach(System.out::println);
 		list4.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+		list4.stream().sorted((x, y) -> x - y).forEach(System.out::println);
 
+//		Comparator<Integer> comparator = new Comparator<Integer>() {
+//
+//			@Override
+//			public int compare(Integer o1, Integer o2) {
+//				return o2 - o1;
+//			}
+//
+//		};
+//		Comparator<Integer> comparator2 = (o1, o2) -> {
+//			return o1 - o2;
+//
+//		};
 //		Map<Integer, Integer> map = new HashMap<>();
 //		map.put(1, 10);
 //		map.put(2, 20);
@@ -79,6 +97,15 @@ public class StreamOrnek {
 //		map.put(6, 60);
 //
 //		map.entrySet().forEach(System.out::println);
+		// map metodu
+		List<String> list5 = new ArrayList<>(List.of("1", "20", "10", "5", "20"));
+
+		List<Integer> list6 = list5.stream().map(x -> Integer.parseInt(x) * 5).collect(Collectors.toList());
+		System.out.println("--------------------");
+		list6.forEach(System.out::println);
+		Set<Integer> set1 = list5.stream().map(x -> Integer.parseInt(x) * 5).collect(Collectors.toSet());
+		System.out.println("--------------------");
+		set1.forEach(System.out::println);
 
 	}
 
