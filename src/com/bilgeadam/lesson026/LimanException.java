@@ -2,19 +2,20 @@ package com.bilgeadam.lesson026;
 
 public class LimanException extends Exception {
 
-	private String message;
+	private ErrorType errorType;
 
-	public LimanException(String message) {
+	public LimanException(ErrorType errorType) {
+		super(errorType.getMessage());
+		this.errorType = errorType;
+	}
+
+	public LimanException(ErrorType errorType, String message) {
 		super(message);
-		this.message = message;
+		this.errorType = errorType;
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
+	public ErrorType getErrorType() {
+		return errorType;
 	}
 
 }
