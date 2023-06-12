@@ -1,7 +1,9 @@
 package com.bilgeadam.lesson026;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Optional;
 
 /*
  *1- Bir limanımız olacak bu limanada yuk yerleştirlcek alanlar olacak 
@@ -42,7 +44,7 @@ public class Uygulama {
 
 	public static void main(String[] args) {
 
-		Yuk yuk = new Yuk("Yuk1", 1000, LocalDate.now());
+		// Yuk yuk = new Yuk("Yuk1", 1000, LocalDate.now());
 		Uygulama uygulama = new Uygulama();
 		uygulama.liman.getYukler()[3] = new Yuk("Yuk3", 100, LocalDate.now().minusDays(5));
 		uygulama.liman.getYukler()[5] = new Yuk("Yuk5", 100, LocalDate.now().minusWeeks(2));
@@ -55,16 +57,46 @@ public class Uygulama {
 //			e.printStackTrace();
 //		}
 
-		try {
-			uygulama.agirlikBelirle();
-		} catch (LimanException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			uygulama.agirlikBelirle();
+//		} catch (LimanException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+//		try {
+//			uygulama.tarihBelirle();
+//		} catch (LimanException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+		uygulama.yukKabulu();
 
 		System.out.println(Arrays.toString(uygulama.liman.getYukler()));
 
 		System.out.println("Program devam ediyor");
+
+	}
+
+	public void yukKabulu() {
+		int index = -1;
+		Optional<Yuk> yuk = Optional.empty();
+		try {
+			index = yukyeriSec2();
+			yuk = yukOlustur();
+
+		} catch (LimanException e) {
+			e.printStackTrace();
+		} finally {
+			if (yuk.isEmpty()) {
+				System.out.println("Yukunuz kabul olmamıstır");
+			} else {
+				System.out.println("Yukunuz kabul olmustur " + index + " nolu yere yerleşmiştir");
+				liman.getYukler()[index] = yuk.get();
+
+			}
+		}
 
 	}
 
@@ -110,6 +142,43 @@ public class Uygulama {
 		}
 
 		return agirlik;
+	}
+
+	public LocalDate tarihBelirle() throws LimanException {
+
+		LocalDate date = Utility.stringTarihDegeriAlma("Lütfen bir tarih giriniz");
+
+		if (date.isBefore(LocalDate.now())) {
+			throw new LimanException(ErrorType.GECERSIZ_KABUL_TARIHI);
+		}
+
+		if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+
+			throw new LimanException(ErrorType.MESAI_GUNU_DISI);
+		}
+
+		return date;
+
+	}
+
+	public Optional<Yuk> yukOlustur() {
+		Yuk yuk = null;
+		try {
+			String isim = Utility.stringDegerAlma("Lütfen bir yuk isimi giriniz");
+			double agirlik = agirlikBelirle();
+			LocalDate date = tarihBelirle();
+			yuk = new Yuk(isim, agirlik, date);
+
+		} catch (LimanException e) {
+			e.printStackTrace();
+
+		} catch (Exception e) {
+			System.out.println("Beklenmedik bir hata olustu: " + e.toString());
+
+		}
+
+		return Optional.ofNullable(yuk);
+
 	}
 
 }
