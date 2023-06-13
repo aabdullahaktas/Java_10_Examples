@@ -1,4 +1,4 @@
-package com.bilgeadam.lesson028;
+package com.bilgeadam.lesson028.ogrenciSecme;
 
 import java.io.File;
 
@@ -7,7 +7,7 @@ public class Uygulama {
 	public static void main(String[] args) {
 
 		OgrenciFileIslemler ogrenciFileIslemler = new OgrenciFileIslemler();
-		// baslangıicListesiOlusturma(ogrenciFileIslemler); //sıfırlama metodu
+		// baslangıicListesiOlusturma(ogrenciFileIslemler); // sıfırlama metodu
 		ogrenciFileIslemler.dosyadanVeriOkuma(FileSabitler.OGRENCI_LIST_FILE_COPY);
 		listedenOgrenciSecme(ogrenciFileIslemler);
 

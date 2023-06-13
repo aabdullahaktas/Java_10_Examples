@@ -1,4 +1,4 @@
-package com.bilgeadam.lesson028;
+package com.bilgeadam.lesson028.ogrenciSecme;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,4 +1,4 @@
-package com.bilgeadam.lesson028;
+package com.bilgeadam.lesson028.ogrenciSecme;
 
 public class FileSabitler {
 
