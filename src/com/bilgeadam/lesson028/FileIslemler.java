@@ -1,7 +1,10 @@
 package com.bilgeadam.lesson028;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -56,6 +59,17 @@ public class FileIslemler {
 			case 3:
 				dosyayaVeriEkle();
 				break;
+			case 4:
+				dosyadanVeriOku();
+				break;
+			case 5:
+				harfDegistir();
+
+				break;
+			case 0:
+				System.out.println("Sistemden çıkılıyor");
+
+				break;
 
 			default:
 				break;
@@ -65,11 +79,47 @@ public class FileIslemler {
 
 	}
 
+	public String dosyadanVeriOku() {
+		String metin = "";
+		String satır = "";
+		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+			while ((satır = bufferedReader.readLine()) != null) {
+
+				if (metin.equals("")) {
+					metin += satır;
+				} else {
+					metin += "\n" + satır;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println(metin);
+		return metin;
+	}
+
+	public void harfDegistir() {
+		String eskiHarf = Utility.stringDegerAlma("Lütfen eski harfi giriniz");
+		String yeniHarf = Utility.stringDegerAlma("Lütfen yeni harfi giriniz");
+		String metin = dosyadanVeriOku();
+		metin = metin.replace(eskiHarf, yeniHarf);
+
+		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+			bufferedWriter.write(metin);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	public void dosyayaVeriEkle() {
 		String veri = Utility.stringDegerAlma("lütfen eklencek veri giriniz");
 
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true))) {
-
 			if (file.length() != 0) {
 				// bufferedWriter.newLine();
 				veri = "\n" + veri;

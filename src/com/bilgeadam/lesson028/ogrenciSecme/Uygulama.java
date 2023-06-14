@@ -5,12 +5,10 @@ import java.io.File;
 public class Uygulama {
 
 	public static void main(String[] args) {
-
 		OgrenciFileIslemler ogrenciFileIslemler = new OgrenciFileIslemler();
 		// baslangıicListesiOlusturma(ogrenciFileIslemler); // sıfırlama metodu
 		ogrenciFileIslemler.dosyadanVeriOkuma(FileSabitler.OGRENCI_LIST_FILE_COPY);
 		listedenOgrenciSecme(ogrenciFileIslemler);
-
 	}
 
 	public static void baslangıicListesiOlusturma(OgrenciFileIslemler ogrenciFileIslemler) {
