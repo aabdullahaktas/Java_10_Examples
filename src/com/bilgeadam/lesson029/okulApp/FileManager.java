@@ -1,10 +1,12 @@
 package com.bilgeadam.lesson029.okulApp;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -78,6 +80,16 @@ public class FileManager {
 			System.out.println(e.toString() + ": ogrencileri kaydetme işelmi başarısız oldu");
 		}
 
+	}
+
+	public static List<Ogrenci> ogrencileriGetir(String isim) {
+		List<Ogrenci> list = new ArrayList<>();
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file + isim + ".txt"))) {
+			list = (List<Ogrenci>) ois.readObject();
+		} catch (Exception e) {
+			System.out.println("bir hata olustu: " + e.toString());
+		}
+		return list;
 	}
 
 }
