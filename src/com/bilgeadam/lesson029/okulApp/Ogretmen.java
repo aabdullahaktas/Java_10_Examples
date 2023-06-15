@@ -29,6 +29,15 @@ public class Ogretmen {
 		this.ogrenciler = ogrenciler;
 	}
 
+	public void notlariOku() {
+		this.ogrenciler = FileManager.dosyadanVeriOku(this.isim);
+	}
+
+	public void dosyaOlustur() {
+		FileManager.ogretmenDosyasıOlustur(ogrenciler, isim);
+
+	}
+
 	@Override
 	public String toString() {
 		return "Ogretmen [isim=" + isim + ", ogrenciler=" + ogrenciler + "]";
