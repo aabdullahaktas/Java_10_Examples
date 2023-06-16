@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,11 +18,11 @@ public class FileManager {
 	static String file = "E:\\java10-workspace\\dosya\\";
 	static String path = file + "ogrenciler.txt";
 
-	public static List<Ogrenci> dosyadanVeriOku(String ogretmenIsmı) {
+	public static List<Ogrenci> dosyadanVeriOku(String ogretmenIsmı, BufferedReader bufferedReader) {
 		List<Ogrenci> list = new ArrayList<>();
 
 		String veri = "";
-		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
+		try {
 			while ((veri = bufferedReader.readLine()) != null) {
 				String[] array = veri.split(",");
 				String isim = array[0];
@@ -36,7 +35,12 @@ public class FileManager {
 				list.add(ogrenci);
 				System.out.println(
 						ogretmenIsmı + " adlı ogretmen ==>" + ogrenci.getIsim() + " adlı ogrencinin notlarnı okudu");
-
+//				try {
+//					Thread.sleep(100);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 			}
 
 		} catch (FileNotFoundException e) {

@@ -1,5 +1,6 @@
 package com.bilgeadam.lesson029.okulApp;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +8,11 @@ public class Ogretmen extends Thread {
 
 	private String isim;
 	private List<Ogrenci> ogrenciler;
+	private BufferedReader bufferedReader;
 
-	public Ogretmen(String isim) {
+	public Ogretmen(String isim, BufferedReader bufferedReader) {
 		this.isim = isim;
+		this.bufferedReader = bufferedReader;
 		this.ogrenciler = new ArrayList<>();
 	}
 
@@ -30,7 +33,7 @@ public class Ogretmen extends Thread {
 	}
 
 	public void notlariOku() {
-		this.ogrenciler = FileManager.dosyadanVeriOku(this.isim);
+		this.ogrenciler = FileManager.dosyadanVeriOku(this.isim, bufferedReader);
 	}
 
 	public void dosyaOlustur() {
@@ -45,16 +48,7 @@ public class Ogretmen extends Thread {
 
 	@Override
 	public void run() {
-
-		for (int i = 0; i < 10; i++) {
-			System.out.println(this.isim + "===>" + (i + 1) + ". ögrencinin notunu okudu ");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-
+		notlariOku();
 	}
 
 	@Override
