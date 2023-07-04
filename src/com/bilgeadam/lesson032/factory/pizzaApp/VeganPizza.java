@@ -7,4 +7,10 @@ public class VeganPizza extends Pizza {
 
 	}
 
+	@Override
+	public String toString() {
+		return "VeganPizza [getFiyat()=" + getFiyat() + ", getTur()=" + getTur() + ", getHamurTipi()=" + getHamurTipi()
+				+ ", getBoyut()=" + getBoyut() + "]";
+	}
+
 }

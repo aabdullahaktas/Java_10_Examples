@@ -65,9 +65,4 @@ public abstract class Pizza {
 		this.boyut = boyut;
 	}
 
-	@Override
-	public String toString() {
-		return "Pizza [fiyat=" + fiyat + ", tur=" + tur + ", hamurTipi=" + hamurTipi + ", boyut=" + boyut + "]";
-	}
-
 }
